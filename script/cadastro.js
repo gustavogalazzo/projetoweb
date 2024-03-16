@@ -6,6 +6,20 @@ async function cadastroUsuario(){
     let cpf_cnpj = document.getElementById('cpf_cnpj')
     let password = document.getElementById('password')
     let birthday = document.getElementById('birthday')
+
+    // essa verificação foi colocada aqui devido ser necessario executa-la antes do fetch(função que chama a API)
+    if(name.value==''){
+        alert("preencha o seu nome")
+        return
+        }
+    
+        if(email.value==''){
+        alert("preencha o seu Email")
+        return
+        }
+
+    
+
     let resposta = await fetch(url,{
         method:"POST",
         body:JSON.stringify(
@@ -25,16 +39,6 @@ async function cadastroUsuario(){
     });
 
     let data = await resposta.json();
-    
-    if(name.value==''){
-        alert("preencha o seu nome")
-        return
-        }
-    
-        if(email.value==''){
-        alert("preencha o seu Email")
-        return
-        }
 
     //if (cpf_cnpj.value !=)
 
