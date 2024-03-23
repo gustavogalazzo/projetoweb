@@ -49,10 +49,11 @@
                   id="name"
                   name="name"
                   placeholder="Nome completo"
+                  required 
                 />
                 <i class="bx bx-user"></i>
               </div><!--INPUT-BOX-->
-              <div class="input-box">
+              <div class="input-box">s
                 <label for="lname"></label>
                 <input
                   type="text"
@@ -60,6 +61,8 @@
                   id="cpf_cnpj"
                   name="cpf_cnpj"
                   placeholder="CPF ou CNPJ"
+                  required 
+                  pattern="\d{2}-\d{2}-[a-z]{2}"
                 />
                 <i class="bx bx-user"></i>
               </div><!--INPUT-BOX-->
@@ -71,6 +74,7 @@
                   id="email"
                   name="email"
                   placeholder="Email"
+                  required 
                 />
                 <i class="bx bx-envelope"></i>
               </div><!--INPUT-BOX-->
@@ -81,6 +85,7 @@
                 id="birthday"
                 name="birthday"
                 placeholder="Nascimento"
+                required 
                 >
                 <i class="bx bx-balloon"></i>
               </div><!--INPUT-BOX-->
@@ -91,6 +96,7 @@
                 id="password"
                 name="password"
                 placeholder="Senha"
+                required 
                 >
                 <i class="bx bx-lock-alt"></i>
               </div><!--INPUT-BOX-->

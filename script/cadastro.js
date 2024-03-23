@@ -1,6 +1,7 @@
-const url = 'https://api-go-wash-efc9c9582687.herokuapp.com/api/user';
+const url = 'https://api-go-wash-efc9c9582687.herokuapp.com/api/user';     // LINK DA API 
 
-async function cadastroUsuario(){   
+
+async function cadastroUsuario(){    // função criada de forma asyncrona, ou seja, executa linha por linha. oque evita que o java processe os codigos antes de acessar a api ( caso o codigo fosse processado primeiro, daria que as variaveis são " indefinidas")
     let name = document.getElementById('name');
     let email = document.getElementById('email')   
     let cpf_cnpj = document.getElementById('cpf_cnpj')
@@ -13,14 +14,30 @@ async function cadastroUsuario(){
         return
         }
     
-        if(email.value==''){
+    if(cpf_cnpj.value==''){
+        alert("preencha o seu CPF")
+        return
+        }
+
+    if(email.value==''){
         alert("preencha o seu Email")
         return
         }
 
+    if(birthday.value==''){
+        alert("preencha o seu Aniversário")
+        return
+        }
+    if(password.value==''){
+        alert("preencha o sua Senha")
+        return
+        }
+  
     
 
-    let resposta = await fetch(url,{
+    
+
+    let resposta = await fetch(url,{  // o Fetch é a função que irá conectar o parametro utilizado ao nosso codig  //Await significa que o codigo deve esperar até a chamada da API 
         method:"POST",
         body:JSON.stringify(
             {
@@ -28,7 +45,7 @@ async function cadastroUsuario(){
                 "email":email.value,
                 "user_type_id":1,
                 "password":password.value,
-                "cpf_cnpj":cpf_cnpj.value.replace(/[^0-9]/g,''),
+                "cpf_cnpj":cpf_cnpj.value.replace(/[^0-9]/g,''), 
                 "terms": 1,
                 "birthday":birthday.value   
             }
@@ -40,12 +57,13 @@ async function cadastroUsuario(){
 
     let data = await resposta.json();
 
-    //if (cpf_cnpj.value !=)
-
     if(data.data?.statusCode && data.data.statusCode != 200){
         alert(data.data.errors);
         return;
     }
+
+
+
     alert("Cadastro feito com sucesso");
     window.location.href = "login.html";
 
